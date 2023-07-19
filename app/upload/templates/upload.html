@@ -1,0 +1,17 @@
+{% block content %}
+
+<h3>Итоговое задание G4.10</h3>
+<h4>Production</h4>
+<p>На запросы по адресу http://localhost:1337/ отвечает сервер Nginx</p>
+
+  <form action="{% url "upload" %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input type="file" name="image_file">
+    <input type="submit" value="submit" />
+  </form>
+
+  {% if image_url %}
+    <p>Файл загружен и доступен по адресу: <a href="{{ image_url }}">{{ image_url }}</a></p>
+  {% endif %}
+
+{% endblock %}
